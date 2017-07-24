@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+option java_package = "com.spiky.server.protomodels";
+option java_outer_classname = "RegistrationLoginModels";
+
+import "DisableWarnings.proto";
+import "GameRoomModels.proto";
+
+message InputChecking {
+	string login        = 1;
+	string mail         = 2;
+	string captcha      = 3;
+	bool   getCaptcha   = 4;
+	bytes  captchaData  = 5;
+	
+	oneof v1 { 
+		bool loginCheckStatus   = 6; 
+		bool mailCheckStatus    = 7;
+		bool captchaCheckStatus = 8;
+	}
+}
+
+message Login {
+	string mail       = 1;
+	string hash  	  = 2;
+	string publicKey  = 3;
+	
+	oneof v1 { 
+		int32 stateCode = 4;
+	}
+}
+
+message Registration {
+	string login        = 1;
+	string hash 	    = 2;
+	string mail         = 3;
+	string captcha      = 4;
+	string publicKey	= 5;
+	
+	oneof v1 { 
+		int32 stateCode = 6;
+	}
+}
+
+message InitialState {
+	string sessionId  = 1;
+	string login 	  = 2;
+	repeated CreateRoom createRoom = 3;
+}

@@ -1,0 +1,80 @@
+syntax = "proto3";
+
+option java_package = "com.spiky.server.protomodels";
+option java_outer_classname = "GameModels";
+
+import "DisableWarnings.proto";
+
+message GameInitialState {
+	bool startGame = 1;
+	repeated Player player = 2;	
+}
+
+message Player {
+	string player_name = 1;
+	string team 	   = 2;
+	int32  health	   = 3;	
+	PlayerPosition playerPosition = 4;
+}
+
+message PlayerPosition {
+
+	Location loc = 1;
+	Rotation rot = 2;
+	
+	message Location {
+		int32 X = 1;
+		int32 Y = 2;
+		int32 Z = 3;
+	}
+	
+	message Rotation {
+		int32 Pitch = 1;
+		int32 Roll  = 2;
+		int32 Yaw   = 3;
+	}	
+	
+	string playerName = 3;
+	int64 timeStamp = 4;
+}
+
+message Ping {
+	int64 time = 1; 
+}
+
+message Shot {
+
+	Start start = 1;
+	End end = 2;
+	PlayerPosition playerPosition = 3;
+
+	message Start {
+		int32 X = 1;
+		int32 Y = 2;
+		int32 Z = 3;
+	} 
+	message End {
+		int32 X = 1;
+		int32 Y = 2;
+		int32 Z = 3;
+	} 
+	
+	int64 timeStamp = 4;
+	
+	string requestFrom = 5;
+	string requestTo   = 6;
+	string roomOwner   = 7;
+	
+	oneof v1 { 
+		bool result_hitState = 8;
+	}
+	
+	string result_bonename = 9;
+}
+
+message GameData {
+	GameInitialState gameInitialState = 1;
+	PlayerPosition playerPosition = 2;
+	Ping ping = 3;
+	Shot shot = 4;
+}	

@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+option java_package = "com.spiky.server.protomodels";
+option java_outer_classname = "GameRoomModels";
+
+import "DisableWarnings.proto";
+import "MainMenuModels.proto";
+
+message Room {
+	CreateRoom createRoom = 1;
+	RoomsListUpdate roomsListUpdate = 2;
+	SubscribeRoom subscribeRoom = 3;
+	RoomUpdate roomUpdate = 4;
+	
+	bool startGame = 5;
+	string roomName = 6;
+}
+
+message CreateRoom {
+	string roomName   = 1;
+	string mapName    = 2;
+	string gameTime   = 3;
+	string maxPlayers = 4;
+	string creator    = 5;
+}
+
+message RoomsListUpdate {
+	bool deleteRoom  = 1;
+	bool addRoom     = 2;
+	string roomName  = 3;
+	string roomOwner = 4;
+}
+
+message SubscribeRoom {
+	oneof v1 { 
+		bool subscribe = 1;
+	}
+	string roomName = 2;
+	int32 stateCode = 3; 
+	
+	RoomDescribe roomDescribe = 4;
+	string player = 5;
+	string team   = 6;
+}
+
+message RoomDescribe {
+	repeated TeamPlayer team1 = 1;
+	repeated TeamPlayer team2 = 2;
+	repeated TeamPlayer undistributed = 3;
+	
+	string roomName   = 4;
+	string mapName    = 5;
+	string gameTime   = 6;
+	string maxPlayers = 7;
+	string creator    = 8;
+	Chat chat = 9;
+}
+
+message TeamPlayer {
+	string player_name = 1;
+}
+
+message RoomUpdate {
+	RoomDescribe roomDescribe = 1;
+	string targetTeam = 2;
+	string roomName   = 3;
+}

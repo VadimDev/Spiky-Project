@@ -1,0 +1,4 @@
+syntax = "proto3";
+
+option java_package = "com.spiky.server.protomodels";
+option java_outer_classname = "DisableWarnings";

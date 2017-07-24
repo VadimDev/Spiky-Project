@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_package = "com.spiky.server.protomodels";
+option java_outer_classname = "MessageModels";
+
+import "UtilityModels.proto";
+import "RegLogModels.proto";
+import "DisableWarnings.proto";
+
+message CryptogramWrapper { 
+	bytes registration  = 1;
+	bytes login 	    = 2;
+	bytes initialState	= 3;
+	bytes room 			= 4;
+	bytes mainMenu 		= 5;
+	bytes gameModels	= 6;
+}
+
+message Wrapper {
+	Utility utility 					= 1;
+	InputChecking inputChecking 		= 2;
+	Registration registration 			= 3;
+	Login login 						= 4;
+	CryptogramWrapper cryptogramWrapper = 5;
+}

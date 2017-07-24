@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option java_package = "com.spiky.server.protomodels";
+option java_outer_classname = "MainMenuModels";
+
+import "DisableWarnings.proto";
+
+message ChatMessage {
+	int64  time   = 1;
+	string name   = 2;
+	string text   = 3;
+}
+
+message Chat {
+	int64  time   = 1;
+	string name   = 2;
+	string text   = 3;
+	
+	oneof v1 { 
+		bool subscribe = 4;
+	}
+
+	repeated ChatMessage messages = 5;
+}
+
+message MainMenu {
+	Chat chat = 1;
+}

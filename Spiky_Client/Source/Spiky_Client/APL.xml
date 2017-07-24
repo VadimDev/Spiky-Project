@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root xmlns:android="http://schemas.android.com/apk/res/android">
+	<resourceCopies>
+		<isArch arch="armeabi-v7a">
+			<copyFile src="$S(PluginDir)/armv7/libcrypto_1_0_0.so"
+					  dst="$S(BuildDir)/libs/armeabi-v7a/libcrypto_1_0_0.so" />
+			<copyFile src="$S(PluginDir)/armv7/libprotobuf.so"
+					  dst="$S(BuildDir)/libs/armeabi-v7a/libprotobuf.so" />
+		</isArch>
+	</resourceCopies>
+</root>
