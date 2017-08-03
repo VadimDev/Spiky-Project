@@ -1,4 +1,4 @@
-An example of MMO games based on Netty and Unreal Engine.
+An example of MMO game based on Netty and Unreal Engine.
 
 Features:
 
